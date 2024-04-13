@@ -38,7 +38,7 @@ public abstract class DefaultIpLocatorProvider : IIpLocatorProvider
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    public object? Key { get; set; }
+    public string? Key { get; set; }
 
     /// <summary>
     /// <inheritdoc/>
@@ -52,7 +52,7 @@ public abstract class DefaultIpLocatorProvider : IIpLocatorProvider
         // 解析本机地址
         if (string.IsNullOrEmpty(ip) || _localhostList.Any(p => p == ip))
         {
-            ret = "本地连接";
+            ret = "localhost";
         }
         else if (Options.EnableCache)
         {

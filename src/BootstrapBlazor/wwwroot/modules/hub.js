@@ -1,6 +1,6 @@
-﻿import { getClientInfo } from "./client.js?v=$version"
-import Data from "./data.js?v=$version"
-import EventHandler from "./event-handler.js?v=$version";
+﻿import { getClientInfo } from "./client.js?v=8.4.1-beta03"
+import Data from "./data.js?v=8.4.1-beta03"
+import EventHandler from "./event-handler.js?v=8.4.1-beta03";
 
 export async function init(id, options) {
     const { invoke, method, interval = 3000, url, connectionId } = options;

@@ -1,5 +1,5 @@
-﻿import { getDescribedElement, getOverflowParent } from "../../modules/utility.js?v=$version"
-import EventHandler from "../../modules/event-handler.js?v=$version"
+﻿import { getDescribedElement, getOverflowParent } from "../../modules/utility.js?v=8.4.1-beta03"
+import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
 
 export function init(id) {
     const el = document.getElementById(id)

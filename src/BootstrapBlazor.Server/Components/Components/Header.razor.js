@@ -1,5 +1,5 @@
-﻿import { getPreferredTheme, setTheme } from "../../_content/BootstrapBlazor/modules/theme.js?v=$version"
-import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=$version"
+﻿import { getPreferredTheme, setTheme } from "../../_content/BootstrapBlazor/modules/theme.js?v=8.4.1-beta03"
+import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=8.4.1-beta03"
 
 export function init() {
     const scrollTop = () => (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop

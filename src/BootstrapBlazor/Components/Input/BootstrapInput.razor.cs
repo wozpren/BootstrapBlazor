@@ -15,5 +15,11 @@ public partial class BootstrapInput<TValue>
     [Parameter]
     public bool Readonly { get; set; }
 
+    /// <summary>
+    /// 图标
+    /// </summary>
+    [Parameter]
+    public string? Icon { get; set; }
+
     private string? ReadonlyString => Readonly ? "true" : null;
 }

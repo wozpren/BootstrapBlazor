@@ -1,4 +1,4 @@
-﻿import EventHandler from "../../modules/event-handler.js?v=$version"
+﻿import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
 
 export function init(id, invoke, callback) {
     const el = document.getElementById(id)

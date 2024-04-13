@@ -1,6 +1,6 @@
-﻿import Data from "../../modules/data.js?v=$version"
-import Drag from "../../modules/drag.js?v=$version"
-import EventHandler from "../../modules/event-handler.js?v=$version"
+﻿import Data from "../../modules/data.js?v=8.4.1-beta03"
+import Drag from "../../modules/drag.js?v=8.4.1-beta03"
+import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
 
 export function init(id, invoke, callback, option) {
     const el = document.getElementById(id)

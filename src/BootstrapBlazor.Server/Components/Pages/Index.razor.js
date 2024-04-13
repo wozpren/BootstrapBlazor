@@ -1,4 +1,4 @@
-﻿import Data from '../../_content/BootstrapBlazor/modules/data.js?v=$version'
+﻿import Data from '../../_content/BootstrapBlazor/modules/data.js?v=8.4.1-beta03'
 
 export function init(id, text1, text2, text3) {
     const el = document.getElementById(id)

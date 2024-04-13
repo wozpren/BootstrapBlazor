@@ -1,4 +1,4 @@
-﻿import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=$version"
+﻿import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=8.4.1-beta03"
 
 export function init(id) {
     const el = document.getElementById(id)

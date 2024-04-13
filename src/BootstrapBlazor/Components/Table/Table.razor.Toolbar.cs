@@ -353,7 +353,7 @@ public partial class Table<TItem>
     /// 获得/设置 保存按钮异步回调方法
     /// </summary>
     [Parameter]
-    public Func<TItem, ItemChangedType, Task<bool>>? OnSaveAsync { get; set; }
+    public Func<TItem, ItemChangedType, ValueTask<bool>>? OnSaveAsync { get; set; }
 
     /// <summary>
     /// 获得/设置 删除按钮异步回调方法

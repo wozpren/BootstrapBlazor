@@ -1,9 +1,9 @@
-﻿export { getResponsive } from '../../modules/responsive.js?v=$version'
-import { copy, drag, getDescribedElement, getOuterHeight, getWidth, isVisible } from '../../modules/utility.js?v=$version'
-import '../../modules/browser.js?v=$version'
-import Data from '../../modules/data.js?v=$version'
-import EventHandler from '../../modules/event-handler.js?v=$version'
-import Popover from "../../modules/base-popover.js?v=$version"
+﻿export { getResponsive } from '../../modules/responsive.js?v=8.4.1-beta03'
+import { copy, drag, getDescribedElement, getOuterHeight, getWidth, isVisible } from '../../modules/utility.js?v=8.4.1-beta03'
+import '../../modules/browser.js?v=8.4.1-beta03'
+import Data from '../../modules/data.js?v=8.4.1-beta03'
+import EventHandler from '../../modules/event-handler.js?v=8.4.1-beta03'
+import Popover from "../../modules/base-popover.js?v=8.4.1-beta03"
 
 const setBodyHeight = table => {
     const el = table.el

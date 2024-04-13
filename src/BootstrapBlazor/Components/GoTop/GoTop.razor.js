@@ -1,5 +1,5 @@
-﻿import Data from "../../modules/data.js?v=$version"
-import EventHandler from "../../modules/event-handler.js?v=$version"
+﻿import Data from "../../modules/data.js?v=8.4.1-beta03"
+import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
 
 const getScrollElement = el => {
     let ele = el

@@ -1,5 +1,5 @@
-﻿import Data from "../../_content/BootstrapBlazor/modules/data.js?v=$version"
-import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=$version"
+﻿import Data from "../../_content/BootstrapBlazor/modules/data.js?v=8.4.1-beta03"
+import EventHandler from "../../_content/BootstrapBlazor/modules/event-handler.js?v=8.4.1-beta03"
 
 export function init(id, version) {
     const el = document.getElementById(id)

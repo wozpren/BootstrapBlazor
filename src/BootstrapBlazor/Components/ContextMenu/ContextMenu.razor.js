@@ -1,6 +1,6 @@
-﻿import Data from "../../modules/data.js?v=$version"
-import EventHandler from "../../modules/event-handler.js?v=$version"
-import { createPopper, computePosition } from '../../modules/floating-ui.js?v=$version'
+﻿import Data from "../../modules/data.js?v=8.4.1-beta03"
+import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
+import { createPopper, computePosition } from '../../modules/floating-ui.js?v=8.4.1-beta03'
 
 export function init(id) {
     const el = document.getElementById(id)

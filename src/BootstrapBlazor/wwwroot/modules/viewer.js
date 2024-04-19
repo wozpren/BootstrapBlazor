@@ -1,5 +1,5 @@
-﻿import Drag from "./drag.js?v=8.4.1-beta03"
-import EventHandler from "./event-handler.js?v=8.4.1-beta03"
+﻿import Drag from "./drag.js"
+import EventHandler from "./event-handler.js"
 
 export default {
     init(el, prevList, config) {

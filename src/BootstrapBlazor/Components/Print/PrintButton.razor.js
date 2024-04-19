@@ -1,7 +1,7 @@
-﻿import { getUID } from "../../modules/utility.js?v=8.4.1-beta03"
-import { showTooltip, removeTooltip } from "../Button/Button.razor.js?v=8.4.1-beta03"
-import Data from "../../modules/data.js?v=8.4.1-beta03"
-import EventHandler from "../../modules/event-handler.js?v=8.4.1-beta03"
+﻿import { getUID } from "../../modules/utility.js"
+import { showTooltip, removeTooltip } from "../Button/Button.razor.js"
+import Data from "../../modules/data.js"
+import EventHandler from "../../modules/event-handler.js"
 
 export function init(id) {
     const el = document.getElementById(id)

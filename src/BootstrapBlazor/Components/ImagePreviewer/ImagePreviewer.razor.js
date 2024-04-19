@@ -1,5 +1,5 @@
-﻿import Data from "../../modules/data.js?v=8.4.1-beta03"
-import Viewer from "../../modules/viewer.js?v=8.4.1-beta03"
+﻿import Data from "../../modules/data.js"
+import Viewer from "../../modules/viewer.js"
 
 export function init(id, prevList) {
     const el = document.getElementById(id)

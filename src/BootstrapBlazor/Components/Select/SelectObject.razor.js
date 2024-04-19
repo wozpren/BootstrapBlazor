@@ -1,6 +1,6 @@
-﻿import { getWidth } from "../../modules/utility.js?v=8.4.1-beta03"
-import Data from "../../modules/data.js?v=8.4.1-beta03"
-import Popover from "../../modules/base-popover.js?v=8.4.1-beta03"
+﻿import { getWidth } from "../../modules/utility.js"
+import Data from "../../modules/data.js"
+import Popover from "../../modules/base-popover.js"
 
 export function init(id) {
     const el = document.getElementById(id)

@@ -44,8 +44,9 @@ internal static class ServicesExtensions
         // 增加多语言支持配置信息
         services.AddRequestLocalization<IOptionsMonitor<BootstrapBlazorOptions>>((localizerOption, blazorOption) =>
         {
-            blazorOption.OnChange(op => Invoke(op));
+            blazorOption.OnChange(Invoke);
             Invoke(blazorOption.CurrentValue);
+            return;
 
             void Invoke(BootstrapBlazorOptions option)
             {
@@ -82,6 +83,9 @@ internal static class ServicesExtensions
 
         // 增加 Table Excel 导出服务
         services.AddBootstrapBlazorTableExportService();
+
+        // 增加 脚本版本服务
+        services.AddBootstrapAppendVersionService();
 
         // 增加 PetaPoco ORM 数据服务操作类
         // 需要时打开下面代码

@@ -23,15 +23,17 @@
             }
         </div>
     }
-    <div class="toast-body">
         @if (Options.ChildContent != null)
         {
+        <div class="toast-body">
             @Options.ChildContent
+        </div>
         }
         else if (!string.IsNullOrEmpty(Options.Content))
         {
+        <div class="toast-body">
             @((MarkupString)Options.Content)
+        </div>
         }
-    </div>
     <div class="@ProgressClass"></div>
 </div>

@@ -73,9 +73,9 @@
         {
             @if (CollapseBarTemplate == null)
             {
-                <a title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="@TooltipText" class="@CollapseBarClassString" @onclick="CollapseMenu">
-                    <i class="@MenuBarIcon"></i>
-                </a>
+        <LinkButton class="@CollapseBarClassString" OnClick="CollapseMenu" Color="Color.Light"
+        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="@TooltipText" Icon="fa-solid fa-bars" />
+
             }
             else
             {

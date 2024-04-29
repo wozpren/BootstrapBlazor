@@ -180,7 +180,7 @@
 }
 
 @media (min-width: 768px) {
-    .layout-side.is-collapsed:not(:hover) .menu.is-collapsed .submenu .text {
+    .layout-side.is-collapsed .menu.is-collapsed .submenu .text {
         width: 0;
     }
 }

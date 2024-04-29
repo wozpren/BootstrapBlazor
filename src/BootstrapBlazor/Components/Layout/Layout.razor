@@ -1,12 +1,11 @@
 ﻿@namespace BootstrapBlazor.Components
+@using Microsoft.AspNetCore.Components.Authorization
 @inherits BootstrapModuleComponentBase
 @attribute [BootstrapModuleAutoLoader(JSObjectReference = true)]
 
 <CascadingValue Value="this" IsFixed="true">
-    @if (IsInit)
-    {
-        @if (IsAuthenticated)
-        {
+<AuthorizeView>
+    <Authorized>
             <section @attributes="AdditionalAttributes" class="@ClassString">
                 @if (Side == null)
                 {
@@ -54,16 +53,11 @@
                     }
                 }
             </section>
-        }
-        else if (NotAuthorized != null)
-        {
-            @NotAuthorized
-        }
-        else
-        {
-            @RenderMain
-        }
-    }
+    </Authorized>
+    <NotAuthorized>
+        @NotAuthorized
+    </NotAuthorized>      
+</AuthorizeView>
 </CascadingValue>
 
 @code {
@@ -73,8 +67,6 @@
         {
             @if (CollapseBarTemplate == null)
             {
-        <LinkButton class="@CollapseBarClassString" OnClick="CollapseMenu" Color="Color.Light"
-        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="@TooltipText" Icon="fa-solid fa-bars" />
 
             }
             else
@@ -87,6 +79,8 @@
 
     RenderFragment<bool> RenderMenu => hasScroll =>
     @<div class="layout-menu">
+        <LinkButton class="@CollapseBarClassString" OnClick="CollapseMenu" Color="Color.Dark"
+                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="@TooltipText" Icon="fa-solid fa-bars" />
         @if (hasScroll)
         {
             <Scroll>

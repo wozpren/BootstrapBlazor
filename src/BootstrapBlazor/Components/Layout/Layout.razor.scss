@@ -163,6 +163,7 @@
 }
 
 .layout-header-bar {
+    margin: 0 8px;
     padding: 4px 12px;
     color: #fff;
     border-radius: var(--bs-border-radius);
@@ -173,6 +174,12 @@
 
     &.is-collapsed .fa-bars {
         transform: rotate(90deg);
+    }
+
+    &:hover {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: #fff !important;
     }
 }
 
@@ -206,8 +213,8 @@
         width: var(--bb-layout-sidebar-width);
     }
 
-    .layout.is-page .layout-side.is-collapsed:not(:hover),
-    .layout.is-page .layout-side:not(:hover) .menu.is-vertical.is-collapsed {
+    .layout.is-page .layout-side.is-collapsed,
+    .layout.is-page .layout-side .menu.is-vertical.is-collapsed {
         width: var(--bb-layout-sidebar-collapse-width);
     }
 

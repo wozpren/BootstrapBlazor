@@ -31,9 +31,13 @@
         &:not(.is-horizontal) {
             height: var(--bb-slide-list-height-collapsed);
             width: var(--bb-slide-list-width);
+            opacity: 0;
+            visibility: hidden;
 
             &.show {
-                height: var(--bb-slide-list-height);
+                height: auto;
+                opacity: 1;
+                visibility: visible;
             }
         }
 

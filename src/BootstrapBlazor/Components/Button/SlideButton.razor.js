@@ -13,13 +13,16 @@ export function init(id) {
     reset(slide)
 
     EventHandler.on(button, 'click', () => {
+        button.classList.toggle('show')
         list.classList.toggle('show')
     })
     EventHandler.on(list, 'click', '.btn-close', e => {
         e.stopPropagation()
+        button.classList.remove('show')
         list.classList.remove('show')
     })
     EventHandler.on(list, 'click', '.slide-item', e => {
+        button.classList.remove('show')
         list.classList.remove('show')
     })
 
@@ -63,7 +66,7 @@ const reset = slide => {
         list.style.setProperty('--bb-slide-list-width-collapsed', '0')
     }
     else {
-        list.style.setProperty('--bb-slide-list-height-collapsed', '0')
+        list.style.setProperty('--bb-slide-list-height-collapsed', 'auto')
     }
 
     const placement = el.getAttribute('data-bb-placement') || 'auto'
@@ -75,7 +78,7 @@ const reset = slide => {
     setVerticalPlacement(list, placement, offset, buttonHeight, buttonWidth, listWidth)
     setHorizontalPlacement(list, placement, offset, buttonHeight, buttonWidth, listHeight)
 
-    list.style.setProperty('transition', 'width .3s ease-in-out, height .3s ease-in-out')
+    list.style.setProperty('transition', 'all .3s ease-in-out, height .3s ease-in-out')
     list.classList.remove('invisible')
 }
 
@@ -137,10 +140,13 @@ const closePopup = e => {
     document.querySelectorAll('.slide-button').forEach(el => {
         if (e.target.closest('.slide-button') !== el) {
             const list = el.querySelector('.slide-list')
+            const button = el.querySelector('.btn-slide')
             if (list.classList.contains('show')) {
                 const autoClose = el.getAttribute('data-bb-auto-close') === 'true'
                 if (autoClose) {
                     list.classList.remove('show')
+                    button.classList.remove('show')
+
                 }
             }
         }

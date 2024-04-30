@@ -8,10 +8,10 @@
     }
     else if(IsIcon) 
     {
-        <i class="@Icon"></i>
+        <i @onclick="@OnClick" class="@Icon"></i>
     }
     else 
     {
-        <img src="@Url" class="@ImgClassString" @onerror="@OnError" @onload="@OnLoad" />
+        <img @onclick="OnClick" src="@Url" class="@ImgClassString" @onerror="@OnError" @onload="@OnLoad" />
     }
 </span>

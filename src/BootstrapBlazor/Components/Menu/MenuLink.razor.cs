@@ -23,7 +23,7 @@ public sealed partial class MenuLink
         .AddClass(ArrowIcon, Item.Items.Any())
         .Build();
 
-    private string? HrefString => (Parent.DisableNavigation || Item.IsDisabled || Item.Items.Any() || string.IsNullOrEmpty(Item.Url)) ? "#" : Item.Url.TrimStart('/');
+    private string? HrefString => (Parent.DisableNavigation || Item.IsDisabled || Item.Items.Any() || string.IsNullOrEmpty(Item.Url)) ? "#" : Item.Url.TrimStart('/') ?? Url;
 
     private string? TargetString => string.IsNullOrEmpty(Item.Target) ? null : Item.Target;
 
@@ -37,6 +37,9 @@ public sealed partial class MenuLink
     [Parameter]
     [NotNull]
     public MenuItem? Item { get; set; }
+
+    [Parameter]
+    public string? Url { get; set; }
 
     /// <summary>
     /// 获得/设置 ArrowIcon 图标

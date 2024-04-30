@@ -2,6 +2,8 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // Website: https://www.blazor.zone or https://argozhang.github.io/
 
+using Microsoft.AspNetCore.Components.Web;
+
 namespace BootstrapBlazor.Components;
 
 /// <summary>
@@ -80,6 +82,9 @@ public partial class Avatar
     /// </summary>
     [Parameter]
     public Func<Task<string>>? GetUrlAsync { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
 
     [Inject]
     [NotNull]

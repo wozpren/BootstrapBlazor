@@ -143,14 +143,24 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
     private static string? GetColWidthString(int? width) => width.HasValue ? $"width: {width.Value}px;" : null;
 
     /// <summary>
-    /// 获得/设置 滚动条宽度 默认为 8
+    /// 获得/设置 滚动条宽度 默认 null 未设置使用 <see cref="ScrollOptions"/> 配置类中的 <see cref="ScrollOptions.ScrollWidth"/>
     /// </summary>
     [Parameter]
-    public int ScrollWidth { get; set; } = 8;
+    public int? ScrollWidth { get; set; }
 
-    private string ScrollWidthString => $"width: {ScrollWidth}px;";
+    /// <summary>
+    /// 获得/设置 滚动条 hover 状态下宽度 默认 null 未设置使用 <see cref="ScrollOptions"/> 配置类中的 <see cref="ScrollOptions.ScrollHoverWidth"/>
+    /// </summary>
+    [Parameter]
+    public int? ScrollHoverWidth { get; set; }
 
-    private string ScrollWidthStyleString => $"--bb-scroll-width: {ScrollWidth}px;";
+    private string ScrollWidthString => $"width: {ActualScrollWidth}px;";
+
+    private string ScrollStyleString => $"--bb-scroll-width: {ActualScrollWidth}px; --bb-scroll-hover-width: {ActualScrollHoverWidth}px;";
+
+    private int ActualScrollWidth => ScrollWidth ?? Options.CurrentValue.ScrollOptions.ScrollWidth;
+
+    private int ActualScrollHoverWidth => ScrollHoverWidth ?? Options.CurrentValue.ScrollOptions.ScrollHoverWidth;
 
     /// <summary>
     /// 获得/设置 Table 高度 默认为 null
@@ -333,6 +343,8 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
 
     private bool _breakPointChanged;
 
+    private List<ColumnWidth> _clientColumnWidths = [];
+
     private async Task OnBreakPointChanged(BreakPoint size)
     {
         if (size != ScreenSize)
@@ -352,6 +364,12 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
     /// </summary>
     [Parameter]
     public bool IsAccordion { get; set; }
+
+    /// <summary>
+    /// 获得/设置 列最小宽度 默认 null 未设置 可通过 <see cref="TableSettings.ColumnMinWidth"/> 统一设置
+    /// </summary>
+    [Parameter]
+    public int? ColumnMinWidth { get; set; }
 
     /// <summary>
     /// 明细行功能中切换行状态时调用此方法
@@ -784,6 +802,9 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
         {
             // 动态列模式
             ResetDynamicContext();
+
+            // resize column width;
+            ResetColumnWidth();
         }
     }
 
@@ -845,7 +866,9 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
             await InvokeVoidAsync("init", Id, Interop, new
             {
                 DragColumnCallback = nameof(DragColumnCallback),
-                ResizeColumnCallback = OnResizeColumnAsync != null ? nameof(ResizeColumnCallback) : null
+                ResizeColumnCallback = OnResizeColumnAsync != null ? nameof(ResizeColumnCallback) : null,
+                ColumnMinWidth = ColumnMinWidth ?? Options.CurrentValue.TableSettings.ColumnMinWidth,
+                ScrollWidth = ActualScrollWidth
             });
         }
     }
@@ -857,7 +880,7 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
         string? ret = null;
         if (_localStorageTableWidth.HasValue)
         {
-            var width = hasHeader ? _localStorageTableWidth.Value : _localStorageTableWidth.Value - 6;
+            var width = hasHeader ? _localStorageTableWidth.Value : _localStorageTableWidth.Value - ActualScrollWidth;
             ret = $"width: {width}px;";
         }
         return ret;
@@ -865,11 +888,11 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
 
     private string? GetTableName(bool hasHeader) => hasHeader ? ClientTableName : null;
 
-    private readonly JsonSerializerOptions _serializerOption = new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+    private readonly JsonSerializerOptions _serializerOption = new(JsonSerializerDefaults.Web);
 
-    private async Task<IEnumerable<ColumnWidth>> ReloadColumnWidthFromBrowserAsync()
+    private async Task<List<ColumnWidth>> ReloadColumnWidthFromBrowserAsync()
     {
-        IEnumerable<ColumnWidth>? ret = null;
+        List<ColumnWidth>? ret = null;
         if (!string.IsNullOrEmpty(ClientTableName) && AllowResizing)
         {
             var jsonData = await InvokeAsync<string>("reloadColumnWidth", ClientTableName);
@@ -880,7 +903,7 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
                     var doc = JsonDocument.Parse(jsonData);
                     if (doc.RootElement.TryGetProperty("cols", out var element))
                     {
-                        ret = element.Deserialize<IEnumerable<ColumnWidth>>(_serializerOption);
+                        ret = element.Deserialize<List<ColumnWidth>>(_serializerOption);
                     }
                     if (doc.RootElement.TryGetProperty("table", out var tableEl) && tableEl.TryGetInt32(out var tableWidth))
                     {
@@ -942,15 +965,8 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
         InternalResetVisibleColumns();
 
         // 查看是否开启列宽序列化
-        var columnWidths = await ReloadColumnWidthFromBrowserAsync();
-        foreach (var cw in columnWidths.Where(c => c.Width > 0))
-        {
-            var c = Columns.Find(c => c.GetFieldName() == cw.Name);
-            if (c != null)
-            {
-                c.Width = cw.Width;
-            }
-        }
+        _clientColumnWidths = await ReloadColumnWidthFromBrowserAsync();
+        ResetColumnWidth();
 
         // set default sortName
         var col = Columns.Find(i => i is { Sortable: true, DefaultSort: true });
@@ -988,6 +1004,18 @@ public partial class Table<TItem> : ITable, IModelEqualityComparer<TItem> where 
         if (Enum.TryParse<BreakPoint>(pointString, true, out var p))
         {
             ScreenSize = p;
+        }
+    }
+
+    private void ResetColumnWidth()
+    {
+        foreach (var cw in _clientColumnWidths.Where(c => c.Width > 0))
+        {
+            var c = Columns.Find(c => c.GetFieldName() == cw.Name);
+            if (c != null)
+            {
+                c.Width = cw.Width;
+            }
         }
     }
 

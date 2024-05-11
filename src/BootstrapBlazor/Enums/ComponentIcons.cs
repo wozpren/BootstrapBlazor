@@ -510,6 +510,11 @@ public enum ComponentIcons
     FullScreenButtonIcon,
 
     /// <summary>
+    /// FullScreenButton 组件 FullScreenExitButtonIcon 属性图标
+    /// </summary>
+    FullScreenExitButtonIcon,
+
+    /// <summary>
     /// Print 组件 ButtonIcon 属性图标
     /// </summary>
     PrintButtonIcon,
@@ -777,5 +782,25 @@ public enum ComponentIcons
     /// <summary>
     /// QueryBuilder 组件 移除按钮图标
     /// </summary>
-    QueryBuilderRemoveIcon
+    QueryBuilderRemoveIcon,
+
+    /// <summary>
+    /// ThemeProvider 组件 自动模式图标
+    /// </summary>
+    ThemeProviderAutoModeIcon,
+
+    /// <summary>
+    /// ThemeProvider 组件 暗黑模式图标
+    /// </summary>
+    ThemeProviderDarkModeIcon,
+
+    /// <summary>
+    /// ThemeProvider 组件 明亮模式图标
+    /// </summary>
+    ThemeProviderLightModeIcon,
+
+    /// <summary>
+    /// ThemeProvider 组件 明亮模式图标
+    /// </summary>
+    ThemeProviderActiveModeIcon
 }

@@ -92,6 +92,7 @@ public class IconThemeOptions
         { ComponentIcons.TableFilterMinusIcon, "fa-solid fa-minus" },
 
         { ComponentIcons.FullScreenButtonIcon, "fa-solid fa-maximize" },
+        { ComponentIcons.FullScreenExitButtonIcon, "fa-solid fa-minimize" },
 
         { ComponentIcons.GoTopIcon, "fa-solid fa-angle-up" },
 
@@ -233,5 +234,10 @@ public class IconThemeOptions
         { ComponentIcons.QueryBuilderPlusIcon, "fa-solid fa-plus" },
         { ComponentIcons.QueryBuilderMinusIcon, "fa-solid fa-minus" },
         { ComponentIcons.QueryBuilderRemoveIcon, "fa-solid fa-xmark" },
+
+        { ComponentIcons.ThemeProviderAutoModeIcon, "fa-solid fa-circle-half-stroke" },
+        { ComponentIcons.ThemeProviderLightModeIcon, "fa-solid fa-sun" },
+        { ComponentIcons.ThemeProviderDarkModeIcon, "fa-solid fa-moon" },
+        { ComponentIcons.ThemeProviderActiveModeIcon, "fa-solid fa-check" }
     };
 }

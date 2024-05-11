@@ -120,7 +120,8 @@
   "BootstrapBlazor.Components.ModalDialog": {
     "CloseButtonText": "关闭",
     "SaveButtonText": "保存",
-    "PrintButtonText": "打印"
+    "PrintButtonText": "打印",
+    "ExportPdfButtonText": "导出 Pdf"
   },
   "BootstrapBlazor.Components.MultiSelect": {
     "PlaceHolder": "点击进行多选 ...",
@@ -355,5 +356,10 @@
   "BootstrapBlazor.Components.ClockPicker": {
     "AMText": "上午",
     "PMText": "下午"
+  },
+  "BootstrapBlazor.Components.ThemeProvider": {
+    "AutoModeText": "自动",
+    "DarkModeText": "暗黑",
+    "LightModeText": "明亮"
   }
 }

@@ -69,6 +69,7 @@ internal class DefaultIcon
         { ComponentIcons.TableFilterMinusIcon, "bi bi-dash" },
 
         { ComponentIcons.FullScreenButtonIcon, "bi bi-arrows-fullscreen" },
+        { ComponentIcons.FullScreenExitButtonIcon, "bi bi-fullscreen-exit" },
 
         { ComponentIcons.GoTopIcon, "bi bi-chevron-up" },
 
@@ -96,7 +97,7 @@ internal class DefaultIcon
 
         { ComponentIcons.PopConfirmButtonConfirmIcon, "bi bi-exclamation-circle" },
 
-        { ComponentIcons.RateStarIcon, "bi bi-star" },
+        { ComponentIcons.RateStarIcon, "bi bi-star-fill" },
         { ComponentIcons.RateUnStarIcon, "bi bi-star" },
 
         { ComponentIcons.RibbonTabArrowUpIcon, "bi bi-chevron-up" },
@@ -209,6 +210,11 @@ internal class DefaultIcon
 
         { ComponentIcons.QueryBuilderPlusIcon, "bi bi-plus" },
         { ComponentIcons.QueryBuilderMinusIcon, "bi bi-dash" },
-        { ComponentIcons.QueryBuilderRemoveIcon, "bi bi-x" }
-    };
+        { ComponentIcons.QueryBuilderRemoveIcon, "bi bi-x" },
+
+        { ComponentIcons.ThemeProviderAutoModeIcon, "bi bi-circle-half" },
+        { ComponentIcons.ThemeProviderLightModeIcon, "bi bi-sun-fill" },
+        { ComponentIcons.ThemeProviderDarkModeIcon, "bi bi-moon-stars-fill" },
+        { ComponentIcons.ThemeProviderActiveModeIcon, "bi bi-check2" }
+};
 }
